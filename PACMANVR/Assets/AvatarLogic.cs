@@ -4,45 +4,82 @@ using UnityEngine;
 
 public class AvatarLogic : MonoBehaviour {
 
-    private float velocity = 10;
+    private float velocity = 2;
     private Vector3 direction;
+    int numAmmo = 5;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    public OVRCameraRig cameraRig;
 
 	// Use this for initialization
 	void Start () {
         direction = Vector3.forward;
+        if (cameraRig != null)
+        {
+            //cameraRig.transform.position = Vector3.forward * -3;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        // constant velocity in one direction
-        transform.Translate(direction * velocity * Time.deltaTime);
 
         float x = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x;
         float y = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
 
-        // no diagonal movement allowed, movement is in 90 degree increments
-        if (Mathf.Abs(x) >= Mathf.Abs(y))
+        if (x != 0 && y != 0)
         {
-            // horizontal movement over vertical
-            if (x < 0)
+            // no diagonal movement allowed, movement is in 90 degree increments
+            if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
-                direction = Vector3.left;
+                // horizontal movement over vertical
+                if (x < 0)
+                {
+                    direction = Vector3.left;
+                    cameraRig.transform.localPosition = new Vector3(-2, 0, 0);
+                    //cameraRig.transform.Rotate(new Vector3(0, -90, 0));
+                  
+                }
+                else
+                {
+                    direction = Vector3.right;
+                    cameraRig.transform.localPosition = new Vector3(2, 0, 0);
+                }
             }
             else
             {
-                direction = Vector3.right;
+                // vertical movement over horizontal
+                if (y < 0)
+                {
+                    direction = Vector3.back;
+                    cameraRig.transform.localPosition = new Vector3(0, 0, 2);
+                }
+                else
+                {
+                    direction = Vector3.forward;
+                    cameraRig.transform.localPosition = new Vector3(0, 0, -2);
+                }
             }
-        } else
-        {
-            // vertical movement over horizontal
-            if (y < 0)
-            {
-                direction = Vector3.down;
-            } else
-            {
-                direction = Vector3.up;
-            }
+            cameraRig.transform.LookAt(transform);
         }
 
+        // constant velocity in one direction
+        transform.Translate(direction * velocity * Time.deltaTime);
+
+
+
+        // shooting
+        if (Input.GetButtonDown("LeftTrigger"))
+        {
+            fireBullet();
+        }
+
+    }
+
+    private void fireBullet()
+    {
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        Debug.Log("direction " + direction);
+        bullet.GetComponent<Rigidbody>().velocity = direction * velocity * 10;
+        Destroy(bullet, 3.0f);
     }
 }
