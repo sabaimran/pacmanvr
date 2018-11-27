@@ -37,6 +37,8 @@ public class laserpickup : MonoBehaviour
         isLaserOn = false;
         righthand = transform.parent;
         transform.parent = null;
+
+        Debug.Log(laserPointer.transform.position);
         //transform.position = new Vector3(0, 1, 1);
     }
 
@@ -46,8 +48,14 @@ public class laserpickup : MonoBehaviour
         RaycastHit hit;
         Vector3 orientation = new Vector3(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z);
         Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+        //Debug.Log(laserPointer.transform.position);
 
-        if (Input.GetButtonDown("TouchControllerA") && !dropped && !isLaserOn)
+        if (Input.GetButtonDown("TouchControllerA"))
+        {
+            Debug.Log("pressed A");
+        }
+
+        if (Input.GetButtonDown("TouchControllerA") && !isLaserOn)
         {
             Debug.Log("pressed A and holding something");
             transform.parent = righthand;
