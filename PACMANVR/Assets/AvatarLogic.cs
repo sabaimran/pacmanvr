@@ -14,10 +14,6 @@ public class AvatarLogic : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         direction = Vector3.forward;
-        if (cameraRig != null)
-        {
-            //cameraRig.transform.position = Vector3.forward * -3;
-        }
 	}
 	
 	// Update is called once per frame
@@ -36,13 +32,15 @@ public class AvatarLogic : MonoBehaviour {
                 {
                     direction = Vector3.left;
                     cameraRig.transform.localPosition = new Vector3(-2, 0, 0);
-                    //cameraRig.transform.Rotate(new Vector3(0, -90, 0));
+                    // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
+                    bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
                   
                 }
                 else
                 {
                     direction = Vector3.right;
                     cameraRig.transform.localPosition = new Vector3(2, 0, 0);
+                    bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
                 }
             }
             else
@@ -52,11 +50,13 @@ public class AvatarLogic : MonoBehaviour {
                 {
                     direction = Vector3.back;
                     cameraRig.transform.localPosition = new Vector3(0, 0, 2);
+                    bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
                 }
                 else
                 {
                     direction = Vector3.forward;
                     cameraRig.transform.localPosition = new Vector3(0, 0, -2);
+                    bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
                 }
             }
             cameraRig.transform.LookAt(transform);
@@ -66,11 +66,15 @@ public class AvatarLogic : MonoBehaviour {
         transform.Translate(direction * velocity * Time.deltaTime);
 
 
-
         // shooting
         if (Input.GetButtonDown("LeftTrigger"))
         {
-            fireBullet();
+            if (numAmmo > 0)
+            {
+                fireBullet();
+                // TODO: how much ammo should player start off with?  
+                numAmmo--;
+            }
         }
 
     }
@@ -78,8 +82,15 @@ public class AvatarLogic : MonoBehaviour {
     private void fireBullet()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        Debug.Log("direction " + direction);
-        bullet.GetComponent<Rigidbody>().velocity = direction * velocity * 10;
+        if (direction.z == 0)
+        {
+            // was moving left or right
+            bullet.GetComponent<Rigidbody>().velocity = direction * -1 * velocity * 10;
+        } else
+        {
+            bullet.GetComponent<Rigidbody>().velocity = direction * velocity * 10;
+        }
+        
         Destroy(bullet, 3.0f);
     }
 }
