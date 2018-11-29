@@ -15,6 +15,10 @@ public class AvatarLogic : MonoBehaviour {
     private float distanceAwayFromAvatar = 2;
 
 	// Use this for initialization
+
+    // MAJOR ISSUE - if bullets and avatar collide, then the avatar will spin around and do undefined stuff.
+    // ANOTHER ISSUE - in previous ver of avatar_logic, movement technically worked--makes sense when you look at it from an aerial perspective. but since it's in first person, everything seems unintuitive
+    // currently is spazzing out
 	void Start () {
         direction = Vector3.forward;
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
@@ -35,18 +39,25 @@ public class AvatarLogic : MonoBehaviour {
                 // horizontal movement over vertical
                 if (x < 0)
                 {
-                    direction = Vector3.left;
-                    cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
+                    // direction = Vector3.left;
+                    //this.transform.Rotate(new Vector3(0, -90, 0));
+                    transform.rotation *= Quaternion.Euler(0, -90, 0);
+                    //transform.Rotate(0, 270, 0);
+                    //cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
                     // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
                     bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
                   
                 }
                 else
                 {
-                    direction = Vector3.right;
-                    cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
+                    // direction = Vector3.right;
+                    //this.transform.Rotate(new Vector3(0, 90, 0));
+                    transform.rotation *= Quaternion.Euler(0, 90, 0);
+                    //transform.Rotate(0, 270, 0);
+                    //cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
                     bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
                 }
+                
             }
             else
             {
@@ -54,15 +65,17 @@ public class AvatarLogic : MonoBehaviour {
                 if (y < 0)
                 {
                     direction = Vector3.back;
-                    cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, distanceAwayFromAvatar);
+                    //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, distanceAwayFromAvatar);
+                    transform.rotation *= Quaternion.Euler(0, 180, 0);
                     bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
                 }
                 else
                 {
                     direction = Vector3.forward;
-                    cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -distanceAwayFromAvatar);
+                    transform.rotation *= Quaternion.Euler(0, 180, 0);
+                    //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -distanceAwayFromAvatar);
                     bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
-                }
+                } 
             }
             cameraRig.transform.LookAt(transform);
         }
