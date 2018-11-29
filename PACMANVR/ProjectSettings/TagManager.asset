@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - start
+  - wall2
+  - wall4
+  - floor
+  - wall1
+  - quit
+  - wall3
+  - ceiling
+  - wall
   layers:
   - Default
   - TransparentFX

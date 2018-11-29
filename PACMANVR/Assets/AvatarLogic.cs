@@ -6,6 +6,7 @@ public class AvatarLogic : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public OVRCameraRig cameraRig;
+    public Rigidbody rb;
 
     private float velocity = 2;
     private Vector3 direction;
@@ -17,6 +18,7 @@ public class AvatarLogic : MonoBehaviour {
 	void Start () {
         direction = Vector3.forward;
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
+        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -67,15 +69,17 @@ public class AvatarLogic : MonoBehaviour {
 
         // constant velocity in one direction
         transform.Translate(direction * velocity * Time.deltaTime);
+//        rb.AddForce(direction * velocity);
 
 
         if (Input.GetButtonDown("LeftTrigger"))
         {
+            Debug.Log("Left trigger pressed");
             if (numAmmo > 0)
             {
                 fireBullet();
                 // TODO: how much ammo should player start off with?  
-                numAmmo--;
+                //numAmmo--;
             }
         }
 
@@ -94,5 +98,16 @@ public class AvatarLogic : MonoBehaviour {
         }
         
         Destroy(bullet, 3.0f);
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("collided");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
+        Debug.Log("triggered");
     }
 }
