@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -936,22 +936,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'In this room, press A to pick up your laser pointer. You will see a ray
-    beam that you can use to select a menu item by pointing at it. You can drop the
-    laser by pressing A.
-
-
-    In the flight simulator:
-
-    - Rotate the plane by moving the left touch controller
-
-    - Accelerate using the right trigger and decelerate using the left trigger
-
-    - Shoot bullets by pressing A
-
-    - Press B to pause
-
-    - The game will end if you crash into land or water'
+  m_Text: Welcome to PacMan VR! Press and hold the A button to select a menu item.
+    If you start the game, you'll enter a spooky VR PacMan universe.
 --- !u!222 &1053144246
 CanvasRenderer:
   m_ObjectHideFlags: 0
