@@ -91,7 +91,7 @@ public class laserpickup : MonoBehaviour
                     Debug.Log("start game");
                     dropped = true;
                     isLaserOn = false;
-                    SceneManager.LoadScene("CS498HW4");
+                    SceneManager.LoadScene("Maze");
                 }
             }
         }

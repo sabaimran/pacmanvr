@@ -34,7 +34,7 @@ public class AvatarLogic : MonoBehaviour {
                 if (x < 0)
                 {
                     direction = Vector3.left;
-                    cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
+                    cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
                     // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
                     bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
                   
@@ -42,7 +42,7 @@ public class AvatarLogic : MonoBehaviour {
                 else
                 {
                     direction = Vector3.right;
-                    cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
+                    cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
                     bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
                 }
             }
