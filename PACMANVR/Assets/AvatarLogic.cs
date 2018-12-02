@@ -14,11 +14,11 @@ public class AvatarLogic : MonoBehaviour {
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
 
-	// Use this for initialization
+    // needed so that avatar doesn't spaz out since swipes normally last for more than one frame
+    private float thresholdForSwipes = 0.2f;
+    private Vector2 prevSwipe = Vector2.zero;
 
     // MAJOR ISSUE - if bullets and avatar collide, then the avatar will spin around and do undefined stuff.
-    // ANOTHER ISSUE - in previous ver of avatar_logic, movement technically worked--makes sense when you look at it from an aerial perspective. but since it's in first person, everything seems unintuitive
-    // currently is spazzing out
 	void Start () {
         direction = Vector3.forward;
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
@@ -27,63 +27,68 @@ public class AvatarLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // left controller thumbstick/dpad position
-        float x = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x;
-        float y = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y;
+        Vector2 currSwipe = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        float x = currSwipe.x;
+        float y = currSwipe.y;
 
-        if (x != 0 && y != 0)
+
+        if ((Mathf.Abs(currSwipe.x - prevSwipe.x) > thresholdForSwipes || Mathf.Abs(currSwipe.y - prevSwipe.y) > thresholdForSwipes) && x != 0 && y != 0)
         {
+            prevSwipe = currSwipe;
+            Debug.Log("x: " + x);
+            Debug.Log("y: " + y);
             // no diagonal movement allowed, movement is in 90 degree increments
             if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
-                // horizontal movement over vertical
-                if (x < 0)
+                if (Mathf.Abs(x) > 0.7)
                 {
-                    // direction = Vector3.left;
-                    //this.transform.Rotate(new Vector3(0, -90, 0));
-                    transform.rotation *= Quaternion.Euler(0, -90, 0);
-                    //transform.Rotate(0, 270, 0);
-                    //cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
-                    // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
-                    bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
-                  
+                    // horizontal movement over vertical
+                    if (x < 0)
+                    {
+                        direction = Vector3.left;
+                        transform.Rotate(0, 270, 0);
+                        //cameraRig.transform.localPosition = new Vector3(distanceAwayFromAvatar, yPosForLookingDown, 0);
+                        // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
+                        bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
+
+                    }
+                    else
+                    {
+                        direction = Vector3.right;
+                        transform.Rotate(0, 90, 0);
+                        //cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
+                        bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
+                    }
                 }
-                else
-                {
-                    // direction = Vector3.right;
-                    //this.transform.Rotate(new Vector3(0, 90, 0));
-                    transform.rotation *= Quaternion.Euler(0, 90, 0);
-                    //transform.Rotate(0, 270, 0);
-                    //cameraRig.transform.localPosition = new Vector3(-distanceAwayFromAvatar, yPosForLookingDown, 0);
-                    bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
-                }
-                
+
             }
             else
             {
-                // vertical movement over horizontal
-                if (y < 0)
+                if (Mathf.Abs(y) > 0.7)
                 {
-                    direction = Vector3.back;
-                    //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, distanceAwayFromAvatar);
-                    transform.rotation *= Quaternion.Euler(0, 180, 0);
-                    bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
+                    // vertical movement over horizontal
+                    if (y < 0)
+                    {
+                        direction = Vector3.back;
+                        transform.Rotate(0, 180, 0);
+                        //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, distanceAwayFromAvatar);
+                        bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
+                    }
+                    else
+                    {
+                        direction = Vector3.forward;
+                        //transform.Rotate(0, 180, 0);
+                        //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -distanceAwayFromAvatar);
+                        bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
+                    }
                 }
-                else
-                {
-                    direction = Vector3.forward;
-                    transform.rotation *= Quaternion.Euler(0, 180, 0);
-                    //cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -distanceAwayFromAvatar);
-                    bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
-                } 
             }
             cameraRig.transform.LookAt(transform);
         }
 
         // constant velocity in one direction
+        direction = Vector3.forward;
         transform.Translate(direction * velocity * Time.deltaTime);
-//        rb.AddForce(direction * velocity);
-
 
         if (Input.GetButtonDown("LeftTrigger"))
         {
