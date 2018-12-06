@@ -14,7 +14,7 @@ public class AvatarLogic : MonoBehaviour {
     public OVRCameraRig cameraRig;
     public Rigidbody rb;
 
-    private float velocity = 0;
+    private float velocity = 2;
     private Vector3 direction;
     private int numAmmo = 5;
     private float yPosForLookingDown = 1.5f;
@@ -35,7 +35,7 @@ public class AvatarLogic : MonoBehaviour {
     // MAJOR ISSUE - if bullets and avatar collide, then the avatar will spin around and do undefined stuff.
     /*
      * TO DO:
-     * - rotation sort of works -- issue: take care of behavior when for example, you've pressed DOWN and then you press RIGHT (should not snap to 90, since the angle needed could potentially be 270)
+     * - rotation sort of works 
      * - fix bullets (do i still need direction?)
      * */
     void Start () {
@@ -67,7 +67,6 @@ public class AvatarLogic : MonoBehaviour {
 
             if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
-                Debug.Log("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 if (Mathf.Abs(x) > 0.7)
                 {
                     // horizontal movement over vertical
@@ -90,12 +89,12 @@ public class AvatarLogic : MonoBehaviour {
                             } else if ((numRepeatedTurns[LEFT] % TOTAL_NUM_OF_TURNS) == 3)
                             {
                                 Debug.Log("Up " + numRepeatedTurns[LEFT]);
-                                goUp();
+                                goRight();
                             } else
                             {
                                 // 0 or 4
                                 Debug.Log("UP " + numRepeatedTurns[LEFT]);
-                                goLeft();
+                                goUp();
                             } 
                         }
                         prevTurn = LEFT;
@@ -122,12 +121,12 @@ public class AvatarLogic : MonoBehaviour {
                             }
                             else if ((numRepeatedTurns[RIGHT] % TOTAL_NUM_OF_TURNS) == 3)
                             {
-                                goUp();
+                                goRight();
                             }
                             else
                             {
                                 // 0 or 4
-                                goRight();
+                                goUp();
                             }
                         }
                         prevTurn = RIGHT;
@@ -152,7 +151,7 @@ public class AvatarLogic : MonoBehaviour {
                             numRepeatedTurns[DOWN] += 1;
                             if ((numRepeatedTurns[DOWN] % TOTAL_NUM_OF_TURNS) == 1 || (numRepeatedTurns[DOWN] % TOTAL_NUM_OF_TURNS == 3))
                             {
-                                goUp();
+                                goRight();
                             } else
                             {
                                 goDown();
@@ -175,7 +174,6 @@ public class AvatarLogic : MonoBehaviour {
 
         if (Input.GetButtonDown("LeftTrigger"))
         {
-            //Debug.Log("Left trigger pressed");
             if (numAmmo > 0)
             {
                 fireBullet();
@@ -215,25 +213,33 @@ public class AvatarLogic : MonoBehaviour {
     private void goLeft()
     {
         newRot = Quaternion.Euler(new Vector3(0, 270, 0));
+        direction = new Vector3(-1, 0, 0);
         // must change bullet spawn location to be in front of avatar by a little bit or else the bullets will collide with avatar and become stuck
-        bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
+        bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
     }
 
     private void goRight()
     {
-        newRot = Quaternion.Euler(new Vector3(0, 90, 0));
-        bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
+        newRot = Quaternion.Euler(new Vector3(0, 0, 0));
+        direction = new Vector3(1, 0, 0);
+        //bulletSpawn.transform.localPosition = new Vector3(-1, 0, 0);
+        bulletSpawn.transform.localPosition = new Vector3(1, 0, 0);
     }
 
     private void goDown()
     {
         newRot = Quaternion.Euler(new Vector3(0, 180, 0));
-        bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
+        //direction = Vector3.back;
+        //bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
+        direction = Vector3.back;
+        bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
     }
 
     private void goUp()
     {
-        newRot = Quaternion.Euler(new Vector3(0, 0, 0));
-        bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
+        newRot = Quaternion.Euler(new Vector3(0, 90, 0));
+        direction = Vector3.forward;
+        //bulletSpawn.transform.localPosition = new Vector3(0, 0, 1);
+        bulletSpawn.transform.localPosition = new Vector3(0, 0, -1);
     }
 }
