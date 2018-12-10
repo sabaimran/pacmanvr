@@ -44,8 +44,7 @@ public class AvatarLogic : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
 
-        // should make bullets ignore avatar, therefore preventing undefined behavior (like avatar spinning around)
-        Physics.IgnoreCollision(bulletPrefab.GetComponent<Collider>(), GetComponent<Collider>());
+
     }
 	
 	// Update is called once per frame
@@ -185,6 +184,8 @@ public class AvatarLogic : MonoBehaviour {
     private void fireBullet()
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        // should make bullets ignore avatar, therefore preventing undefined behavior (like avatar spinning around)
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletVelocity * 10;
         Destroy(bullet, 3.0f);
     }
