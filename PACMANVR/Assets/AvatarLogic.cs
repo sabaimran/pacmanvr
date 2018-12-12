@@ -43,6 +43,7 @@ public class AvatarLogic : MonoBehaviour {
         if ((diffX > thresholdForSwipes || diffY > thresholdForSwipes) && (x != 0 || y != 0))
         {
             prevSwipe = currSwipe;
+            velocity = 2f;
             // no diagonal movement allowed, movement is in 90 degree increments
             target = transform.rotation.eulerAngles;
             if (Mathf.Abs(x) >= Mathf.Abs(y))
@@ -92,6 +93,7 @@ public class AvatarLogic : MonoBehaviour {
 
         // constant velocity in one direction
         transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+        //rb.position += Vector3.forward * velocity * Time.deltaTime;
 
         if (Input.GetButtonDown("LeftTrigger"))
         {
@@ -116,8 +118,13 @@ public class AvatarLogic : MonoBehaviour {
     void OnCollisionEnter(Collision other)
     {
         // Detects walls, but keeps moving through them.
-        if (other.gameObject.name.Contains("Pellet")) {
+        if (other.gameObject.name.Contains("Pellet"))
+        {
             Destroy(other.gameObject);
+        }
+        else if (other.gameObject.name.Contains("wall") || other.gameObject.name.Contains("Wall"))
+        {
+            velocity = 0f;
         }
     }
 
