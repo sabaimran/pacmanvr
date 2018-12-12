@@ -115,6 +115,7 @@ public class AvatarLogic : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
+        // Detects walls, but keeps moving through them.
         if (other.gameObject.name.Contains("Pellet")) {
             Destroy(other.gameObject);
         }
