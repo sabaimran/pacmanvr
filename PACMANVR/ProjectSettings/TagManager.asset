@@ -4,15 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - start
-  - wall2
-  - wall4
-  - floor
-  - wall1
-  - quit
-  - wall3
-  - ceiling
-  - wall
+  - MazeWall
+  - OuterWall
+  - Floor
   layers:
   - Default
   - TransparentFX
