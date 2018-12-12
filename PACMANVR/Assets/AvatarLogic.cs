@@ -115,13 +115,16 @@ public class AvatarLogic : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        //Debug.Log("collided");
+        // Detects walls, but keeps moving through them.
+        if (other.gameObject.name.Contains("Pellet")) {
+            Destroy(other.gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
-        //Debug.Log("triggered");
+        Debug.Log("triggered");
     }
 
     private void goLeft()
