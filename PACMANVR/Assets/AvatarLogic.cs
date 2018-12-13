@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AvatarLogic : MonoBehaviour {
-      public GameObject bulletPrefab;
+    public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public OVRCameraRig cameraRig;
     public Rigidbody rb;
@@ -14,6 +14,8 @@ public class AvatarLogic : MonoBehaviour {
     private int numAmmo = 5;
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
+    private int numPelletsCollected = 0;
+    private bool wallCollision = false;
 
     private bool isRotating = false;
 
@@ -27,6 +29,7 @@ public class AvatarLogic : MonoBehaviour {
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
         rb = GetComponent<Rigidbody>();
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
+       // rb.angularVelocity = new Vector3(0.0f, 0.0f, 0.0f);
     }
 	
 	// Update is called once per frame
@@ -45,6 +48,24 @@ public class AvatarLogic : MonoBehaviour {
             prevSwipe = currSwipe;
             // no diagonal movement allowed, movement is in 90 degree increments
             target = transform.rotation.eulerAngles;
+            if (wallCollision)
+            {
+//                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+//                rb.AddForce(Vector3.forward * 2);
+            } else
+            {
+                velocity = 2;
+            }
+
+            RaycastHit hit;
+            /*if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+            {
+                Debug.Log("hit");
+            } else
+            {
+                Debug.Log("did not hit");
+            } */
+
             if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
                 if (Mathf.Abs(x) > 0.7)
@@ -52,7 +73,6 @@ public class AvatarLogic : MonoBehaviour {
                     // horizontal movement over vertical
                     if (x < 0)
                     {
-                        Debug.Log("-------------------------------LEFT SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -61,7 +81,6 @@ public class AvatarLogic : MonoBehaviour {
                     }
                     else
                     {
-                        Debug.Log("-------------------------------RIGHT SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -77,7 +96,6 @@ public class AvatarLogic : MonoBehaviour {
                     // vertical movement over horizontal
                     if (y < 0)
                     {
-                        Debug.Log("-------------------------------DOWN SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -92,6 +110,7 @@ public class AvatarLogic : MonoBehaviour {
 
         // constant velocity in one direction
         transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+ //       rb.AddForce(Vector3.forward * velocity * Time.deltaTime);
 
         if (Input.GetButtonDown("LeftTrigger"))
         {
@@ -118,8 +137,58 @@ public class AvatarLogic : MonoBehaviour {
         // Detects walls, but keeps moving through them.
         if (other.gameObject.name.Contains("Pellet")) {
             Destroy(other.gameObject);
+            numPelletsCollected++;
+        } else if (other.gameObject.CompareTag("OuterWall") || other.gameObject.CompareTag("MazeWall"))
+        {
+            Debug.Log("registered");
+            wallCollision = true;
+            velocity = 0;
         }
     }
+
+    void OnCollisionStay(Collision collision)
+    {
+        //        Debug.Log("hmmm00");
+        //    rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        //    rb.AddForce(Vector3.forward * 15, ForceMode.VelocityChange);
+
+        /*     Vector3 heading = collision.transform.position - transform.position;
+                    float dot = Vector3.Dot(heading.normalized, transform.forward);
+                    if  (dot == 1)
+                    {
+                        Debug.Log("facing wall00");
+                    } else if (dot == -1)
+                    {
+                        Debug.Log("facing AWY from wall");
+                    } else
+                    {
+                        Debug.Log("facing wall side");
+                    } */
+        Ray ray = new Ray(transform.position, (collision.transform.position - transform.position).normalized * 10);
+        RaycastHit hit;
+        int layerMask = 1 << 9;
+        layerMask = ~layerMask;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        {
+            Debug.Log("hit " + collision.gameObject.tag);
+            if (hit.collider.gameObject.tag == "OuterWall" || hit.collider.gameObject.tag == "MazeWall")
+            {
+                Debug.Log("HIT THE FUCKING WALL");
+            } else
+            {
+               // Debug.Log("NOT HITTING THE ASJFLSFJFSLFJL WALL");
+            }
+        }
+
+    }
+
+       private void OnCollisionExit(Collision collision)
+       {
+           wallCollision = false;
+   //        velocity = 2;
+   //        transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+       } 
 
     void OnTriggerEnter(Collider other)
     {
@@ -155,19 +224,19 @@ public class AvatarLogic : MonoBehaviour {
             Quaternion from = transform.rotation;
             Quaternion to = transform.rotation;
             to *= Quaternion.Euler(axis * angle);
-            Debug.Log("transform.rotate is " + from);
-            Debug.Log("to is " + to);
+ //           Debug.Log("transform.rotate is " + from);
+  //          Debug.Log("to is " + to);
 
             float elapsed = 0.0f;
             while (elapsed < duration)
             {
                 transform.rotation = Quaternion.Slerp(from, to, (elapsed / duration) * 2);
                 elapsed += Time.deltaTime;
-                Debug.Log("currently rotating ------ " + transform.rotation);
+ //               Debug.Log("currently rotating ------ " + transform.rotation);
                 yield return null;
             }
             transform.rotation = to;
-            Debug.Log("finished rotating, transform.rotation is " + transform.rotation);
+ //           Debug.Log("finished rotating, transform.rotation is " + transform.rotation);
             isRotating = false;
         }
         
