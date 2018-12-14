@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 10586250}
   - component: {fileID: 10586249}
   - component: {fileID: 10586248}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (30)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 10586247}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 27875146}
   - component: {fileID: 27875145}
   - component: {fileID: 27875144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (29)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27875143}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 102895060}
   - component: {fileID: 102895059}
   - component: {fileID: 102895058}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (77)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 102895057}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 106256878}
   - component: {fileID: 106256877}
   - component: {fileID: 106256876}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (19)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106256875}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 155625204}
   - component: {fileID: 155625203}
   - component: {fileID: 155625202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (41)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155625201}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 193956576}
   - component: {fileID: 193956575}
   - component: {fileID: 193956574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (51)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 193956573}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1150,6 +1150,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 159718, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 168682, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
   m_IsPrefabAsset: 0
@@ -1249,7 +1281,7 @@ GameObject:
   - component: {fileID: 328933795}
   - component: {fileID: 328933794}
   - component: {fileID: 328933793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (44)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1263,7 +1295,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 328933792}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1334,7 +1366,7 @@ GameObject:
   - component: {fileID: 342681245}
   - component: {fileID: 342681244}
   - component: {fileID: 342681243}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (32)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1348,7 +1380,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342681242}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1419,7 +1451,7 @@ GameObject:
   - component: {fileID: 351418883}
   - component: {fileID: 351418882}
   - component: {fileID: 351418881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (24)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1433,7 +1465,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 351418880}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1504,7 +1536,7 @@ GameObject:
   - component: {fileID: 405640630}
   - component: {fileID: 405640629}
   - component: {fileID: 405640628}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (3)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1518,7 +1550,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405640627}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1589,7 +1621,7 @@ GameObject:
   - component: {fileID: 407012698}
   - component: {fileID: 407012697}
   - component: {fileID: 407012696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (79)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1603,7 +1635,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 407012695}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1674,7 +1706,7 @@ GameObject:
   - component: {fileID: 411366309}
   - component: {fileID: 411366308}
   - component: {fileID: 411366307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (42)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1688,7 +1720,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411366306}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1759,7 +1791,7 @@ GameObject:
   - component: {fileID: 443314256}
   - component: {fileID: 443314255}
   - component: {fileID: 443314254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (9)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1773,7 +1805,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 443314253}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1844,7 +1876,7 @@ GameObject:
   - component: {fileID: 478080642}
   - component: {fileID: 478080641}
   - component: {fileID: 478080640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (48)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -1858,7 +1890,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 478080639}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2025,7 +2057,7 @@ GameObject:
   - component: {fileID: 513676574}
   - component: {fileID: 513676573}
   - component: {fileID: 513676572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (69)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2039,7 +2071,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 513676571}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2195,7 +2227,7 @@ GameObject:
   - component: {fileID: 558326608}
   - component: {fileID: 558326607}
   - component: {fileID: 558326606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (67)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2209,7 +2241,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558326605}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2280,7 +2312,7 @@ GameObject:
   - component: {fileID: 583251869}
   - component: {fileID: 583251868}
   - component: {fileID: 583251867}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (75)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2294,7 +2326,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 583251866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2365,7 +2397,7 @@ GameObject:
   - component: {fileID: 600729723}
   - component: {fileID: 600729722}
   - component: {fileID: 600729721}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (60)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2379,7 +2411,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 600729720}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2450,7 +2482,7 @@ GameObject:
   - component: {fileID: 606790602}
   - component: {fileID: 606790601}
   - component: {fileID: 606790600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (58)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2464,7 +2496,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606790599}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2620,7 +2652,7 @@ GameObject:
   - component: {fileID: 625987208}
   - component: {fileID: 625987207}
   - component: {fileID: 625987206}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (6)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2634,7 +2666,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 625987205}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2790,7 +2822,7 @@ GameObject:
   - component: {fileID: 680321421}
   - component: {fileID: 680321420}
   - component: {fileID: 680321419}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (62)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -2804,7 +2836,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 680321418}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2962,7 +2994,7 @@ GameObject:
   - component: {fileID: 738420705}
   - component: {fileID: 738420704}
   - component: {fileID: 738420709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2984,7 +3016,7 @@ MonoBehaviour:
     type: 2}
   bulletSpawn: {fileID: 1491516913}
   cameraRig: {fileID: 501886544}
-  rb: {fileID: 0}
+  rb: {fileID: 738420709}
 --- !u!135 &738420705
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3046,7 +3078,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738420703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.75, y: 1, z: 4.75}
+  m_LocalPosition: {x: 3.6, y: 1, z: 4.75}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1491516913}
@@ -3080,7 +3112,7 @@ GameObject:
   - component: {fileID: 742110030}
   - component: {fileID: 742110029}
   - component: {fileID: 742110028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (53)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3094,7 +3126,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 742110027}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3165,7 +3197,7 @@ GameObject:
   - component: {fileID: 742195447}
   - component: {fileID: 742195446}
   - component: {fileID: 742195445}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (78)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3179,7 +3211,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 742195444}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3335,7 +3367,7 @@ GameObject:
   - component: {fileID: 751431136}
   - component: {fileID: 751431135}
   - component: {fileID: 751431134}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (65)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3349,7 +3381,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751431133}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3420,7 +3452,7 @@ GameObject:
   - component: {fileID: 760828770}
   - component: {fileID: 760828769}
   - component: {fileID: 760828768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (57)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3434,7 +3466,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 760828767}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3505,7 +3537,7 @@ GameObject:
   - component: {fileID: 774371127}
   - component: {fileID: 774371126}
   - component: {fileID: 774371125}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (76)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3519,7 +3551,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 774371124}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3590,7 +3622,7 @@ GameObject:
   - component: {fileID: 820812161}
   - component: {fileID: 820812160}
   - component: {fileID: 820812159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (27)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3604,7 +3636,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 820812158}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3760,7 +3792,7 @@ GameObject:
   - component: {fileID: 930951508}
   - component: {fileID: 930951507}
   - component: {fileID: 930951506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -3847,7 +3879,7 @@ GameObject:
   - component: {fileID: 953690846}
   - component: {fileID: 953690845}
   - component: {fileID: 953690844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (55)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -3861,7 +3893,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 953690843}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4017,7 +4049,7 @@ GameObject:
   - component: {fileID: 966982641}
   - component: {fileID: 966982640}
   - component: {fileID: 966982639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (35)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4031,7 +4063,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966982638}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4102,7 +4134,7 @@ GameObject:
   - component: {fileID: 985600629}
   - component: {fileID: 985600628}
   - component: {fileID: 985600627}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (31)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4116,7 +4148,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 985600626}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4272,7 +4304,7 @@ GameObject:
   - component: {fileID: 1015401047}
   - component: {fileID: 1015401046}
   - component: {fileID: 1015401045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (26)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4286,7 +4318,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1015401044}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4357,7 +4389,7 @@ GameObject:
   - component: {fileID: 1041059420}
   - component: {fileID: 1041059419}
   - component: {fileID: 1041059418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (68)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4371,7 +4403,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041059417}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4442,7 +4474,7 @@ GameObject:
   - component: {fileID: 1051926597}
   - component: {fileID: 1051926596}
   - component: {fileID: 1051926595}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (50)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4456,7 +4488,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1051926594}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4527,7 +4559,7 @@ GameObject:
   - component: {fileID: 1066596329}
   - component: {fileID: 1066596328}
   - component: {fileID: 1066596327}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (80)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4541,7 +4573,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1066596326}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4612,7 +4644,7 @@ GameObject:
   - component: {fileID: 1082222220}
   - component: {fileID: 1082222219}
   - component: {fileID: 1082222218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (23)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4626,7 +4658,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1082222217}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4697,7 +4729,7 @@ GameObject:
   - component: {fileID: 1108418124}
   - component: {fileID: 1108418123}
   - component: {fileID: 1108418122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (66)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4711,7 +4743,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1108418121}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4867,7 +4899,7 @@ GameObject:
   - component: {fileID: 1129143256}
   - component: {fileID: 1129143255}
   - component: {fileID: 1129143254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (2)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4881,7 +4913,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1129143253}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4952,7 +4984,7 @@ GameObject:
   - component: {fileID: 1134166107}
   - component: {fileID: 1134166106}
   - component: {fileID: 1134166105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (40)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -4966,7 +4998,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134166104}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5037,7 +5069,7 @@ GameObject:
   - component: {fileID: 1165305292}
   - component: {fileID: 1165305291}
   - component: {fileID: 1165305290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (39)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5051,7 +5083,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165305289}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5122,7 +5154,7 @@ GameObject:
   - component: {fileID: 1170760761}
   - component: {fileID: 1170760760}
   - component: {fileID: 1170760759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (43)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5136,7 +5168,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170760758}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5207,7 +5239,7 @@ GameObject:
   - component: {fileID: 1176410022}
   - component: {fileID: 1176410021}
   - component: {fileID: 1176410020}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (37)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5221,7 +5253,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176410019}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5377,7 +5409,7 @@ GameObject:
   - component: {fileID: 1208802005}
   - component: {fileID: 1208802004}
   - component: {fileID: 1208802003}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (21)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5391,7 +5423,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208802002}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5462,7 +5494,7 @@ GameObject:
   - component: {fileID: 1260376799}
   - component: {fileID: 1260376798}
   - component: {fileID: 1260376797}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (54)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5476,7 +5508,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1260376796}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5632,7 +5664,7 @@ GameObject:
   - component: {fileID: 1271416390}
   - component: {fileID: 1271416389}
   - component: {fileID: 1271416388}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (61)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5646,7 +5678,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271416387}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5802,7 +5834,7 @@ GameObject:
   - component: {fileID: 1294715884}
   - component: {fileID: 1294715883}
   - component: {fileID: 1294715882}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (20)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5816,7 +5848,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1294715881}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5887,7 +5919,7 @@ GameObject:
   - component: {fileID: 1331916087}
   - component: {fileID: 1331916086}
   - component: {fileID: 1331916085}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (49)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5901,7 +5933,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1331916084}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5972,7 +6004,7 @@ GameObject:
   - component: {fileID: 1332414804}
   - component: {fileID: 1332414803}
   - component: {fileID: 1332414802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (16)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -5986,7 +6018,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332414801}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6057,7 +6089,7 @@ GameObject:
   - component: {fileID: 1353929350}
   - component: {fileID: 1353929349}
   - component: {fileID: 1353929348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (7)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6071,7 +6103,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353929347}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6142,7 +6174,7 @@ GameObject:
   - component: {fileID: 1364610147}
   - component: {fileID: 1364610146}
   - component: {fileID: 1364610145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (70)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6156,7 +6188,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1364610144}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6227,7 +6259,7 @@ GameObject:
   - component: {fileID: 1379983925}
   - component: {fileID: 1379983924}
   - component: {fileID: 1379983923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (4)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6241,7 +6273,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379983922}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6312,7 +6344,7 @@ GameObject:
   - component: {fileID: 1380956118}
   - component: {fileID: 1380956117}
   - component: {fileID: 1380956116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (14)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6326,7 +6358,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1380956115}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6397,7 +6429,7 @@ GameObject:
   - component: {fileID: 1388626858}
   - component: {fileID: 1388626857}
   - component: {fileID: 1388626856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (22)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6411,7 +6443,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388626855}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6567,7 +6599,7 @@ GameObject:
   - component: {fileID: 1435883515}
   - component: {fileID: 1435883514}
   - component: {fileID: 1435883513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (36)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6581,7 +6613,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1435883512}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6734,7 +6766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1491516913}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6765,7 +6797,7 @@ GameObject:
   - component: {fileID: 1544349117}
   - component: {fileID: 1544349116}
   - component: {fileID: 1544349115}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (17)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6779,7 +6811,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1544349114}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6850,7 +6882,7 @@ GameObject:
   - component: {fileID: 1549286524}
   - component: {fileID: 1549286523}
   - component: {fileID: 1549286522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (5)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6864,7 +6896,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1549286521}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6935,7 +6967,7 @@ GameObject:
   - component: {fileID: 1562383910}
   - component: {fileID: 1562383909}
   - component: {fileID: 1562383908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (46)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -6949,7 +6981,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1562383907}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7020,7 +7052,7 @@ GameObject:
   - component: {fileID: 1571614990}
   - component: {fileID: 1571614989}
   - component: {fileID: 1571614988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (34)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7034,7 +7066,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1571614987}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7105,7 +7137,7 @@ GameObject:
   - component: {fileID: 1579691949}
   - component: {fileID: 1579691948}
   - component: {fileID: 1579691947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (71)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7119,7 +7151,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1579691946}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7190,7 +7222,7 @@ GameObject:
   - component: {fileID: 1588950946}
   - component: {fileID: 1588950945}
   - component: {fileID: 1588950944}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (10)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7204,7 +7236,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1588950943}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7275,7 +7307,7 @@ GameObject:
   - component: {fileID: 1592462388}
   - component: {fileID: 1592462387}
   - component: {fileID: 1592462386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (1)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7289,7 +7321,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1592462385}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7530,7 +7562,7 @@ GameObject:
   - component: {fileID: 1634220925}
   - component: {fileID: 1634220924}
   - component: {fileID: 1634220923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (72)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7544,7 +7576,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634220922}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7615,7 +7647,7 @@ GameObject:
   - component: {fileID: 1654999236}
   - component: {fileID: 1654999235}
   - component: {fileID: 1654999234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (63)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7629,7 +7661,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654999233}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7785,7 +7817,7 @@ GameObject:
   - component: {fileID: 1675463513}
   - component: {fileID: 1675463512}
   - component: {fileID: 1675463511}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (15)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -7799,7 +7831,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675463510}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8040,7 +8072,7 @@ GameObject:
   - component: {fileID: 1723672985}
   - component: {fileID: 1723672984}
   - component: {fileID: 1723672983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (74)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8054,7 +8086,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1723672982}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8125,7 +8157,7 @@ GameObject:
   - component: {fileID: 1775614232}
   - component: {fileID: 1775614231}
   - component: {fileID: 1775614230}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (13)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8139,7 +8171,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775614229}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8295,7 +8327,7 @@ GameObject:
   - component: {fileID: 1810222979}
   - component: {fileID: 1810222978}
   - component: {fileID: 1810222977}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (59)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8309,7 +8341,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810222976}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8550,7 +8582,7 @@ GameObject:
   - component: {fileID: 1866323605}
   - component: {fileID: 1866323604}
   - component: {fileID: 1866323603}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (33)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8564,7 +8596,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866323602}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8635,7 +8667,7 @@ GameObject:
   - component: {fileID: 1885858840}
   - component: {fileID: 1885858839}
   - component: {fileID: 1885858838}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (73)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8649,7 +8681,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1885858837}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8720,7 +8752,7 @@ GameObject:
   - component: {fileID: 1911273313}
   - component: {fileID: 1911273312}
   - component: {fileID: 1911273311}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (11)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8734,7 +8766,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1911273310}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8805,7 +8837,7 @@ GameObject:
   - component: {fileID: 1920526526}
   - component: {fileID: 1920526525}
   - component: {fileID: 1920526524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (52)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8819,7 +8851,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1920526523}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8890,7 +8922,7 @@ GameObject:
   - component: {fileID: 1921137121}
   - component: {fileID: 1921137120}
   - component: {fileID: 1921137119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (28)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8904,7 +8936,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921137118}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8975,7 +9007,7 @@ GameObject:
   - component: {fileID: 1928883072}
   - component: {fileID: 1928883071}
   - component: {fileID: 1928883070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (18)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -8989,7 +9021,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928883069}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9060,7 +9092,7 @@ GameObject:
   - component: {fileID: 1976855098}
   - component: {fileID: 1976855097}
   - component: {fileID: 1976855096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (47)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9074,7 +9106,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1976855095}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9145,7 +9177,7 @@ GameObject:
   - component: {fileID: 2011013615}
   - component: {fileID: 2011013614}
   - component: {fileID: 2011013613}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (25)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9159,7 +9191,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2011013612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9315,7 +9347,7 @@ GameObject:
   - component: {fileID: 2028077470}
   - component: {fileID: 2028077469}
   - component: {fileID: 2028077468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (64)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9329,7 +9361,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2028077467}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9400,7 +9432,7 @@ GameObject:
   - component: {fileID: 2029856217}
   - component: {fileID: 2029856216}
   - component: {fileID: 2029856215}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (45)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9414,7 +9446,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029856214}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9570,7 +9602,7 @@ GameObject:
   - component: {fileID: 2060699433}
   - component: {fileID: 2060699432}
   - component: {fileID: 2060699431}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (38)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9584,7 +9616,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060699430}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9740,7 +9772,7 @@ GameObject:
   - component: {fileID: 2085505814}
   - component: {fileID: 2085505813}
   - component: {fileID: 2085505812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (8)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9754,7 +9786,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085505811}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9825,7 +9857,7 @@ GameObject:
   - component: {fileID: 2105832231}
   - component: {fileID: 2105832230}
   - component: {fileID: 2105832229}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (56)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -9839,7 +9871,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105832228}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9995,7 +10027,7 @@ GameObject:
   - component: {fileID: 2120422658}
   - component: {fileID: 2120422657}
   - component: {fileID: 2120422656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pellet (12)
   m_TagString: Pellet
   m_Icon: {fileID: 0}
@@ -10009,7 +10041,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120422655}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

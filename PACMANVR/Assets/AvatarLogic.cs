@@ -8,7 +8,6 @@ public class AvatarLogic : MonoBehaviour {
     public OVRCameraRig cameraRig;
     public Rigidbody rb;
 
-    private float velocity = 2;
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
     private int numAmmo = 5;
@@ -16,6 +15,7 @@ public class AvatarLogic : MonoBehaviour {
     private float distanceAwayFromAvatar = 2;
     private int numPelletsCollected = 0;
     private bool wallCollision = false;
+    private int speed = 5;
 
     private bool isRotating = false;
 
@@ -29,7 +29,8 @@ public class AvatarLogic : MonoBehaviour {
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
         rb = GetComponent<Rigidbody>();
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
-       // rb.angularVelocity = new Vector3(0.0f, 0.0f, 0.0f);
+        // prevent sphere from rolling
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
     }
 	
 	// Update is called once per frame
@@ -48,23 +49,6 @@ public class AvatarLogic : MonoBehaviour {
             prevSwipe = currSwipe;
             // no diagonal movement allowed, movement is in 90 degree increments
             target = transform.rotation.eulerAngles;
-            if (wallCollision)
-            {
-//                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-//                rb.AddForce(Vector3.forward * 2);
-            } else
-            {
-                velocity = 2;
-            }
-
-            RaycastHit hit;
-            /*if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-            {
-                Debug.Log("hit");
-            } else
-            {
-                Debug.Log("did not hit");
-            } */
 
             if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
@@ -106,12 +90,19 @@ public class AvatarLogic : MonoBehaviour {
             
             }
             cameraRig.transform.LookAt(transform);
+
         }
 
-        // constant velocity in one direction
-        transform.Translate(Vector3.forward * velocity * Time.deltaTime);
- //       rb.AddForce(Vector3.forward * velocity * Time.deltaTime);
+        // make sphere move + (probably) can't be in start() bc you need to account for change in directions
+        rb.velocity = (transform.forward * speed);
 
+        // make sure it doesn't start moving up walls
+        if (transform.position.y > 1)
+        {
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
+        
+        // for some reason, sometimes this switches to right trigger?
         if (Input.GetButtonDown("LeftTrigger"))
         {
             if (numAmmo > 0)
@@ -134,86 +125,21 @@ public class AvatarLogic : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        // Detects walls, but keeps moving through them.
-        if (other.gameObject.name.Contains("Pellet")) {
-            Destroy(other.gameObject);
-            numPelletsCollected++;
-        } else if (other.gameObject.CompareTag("OuterWall") || other.gameObject.CompareTag("MazeWall"))
+        // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
+        if (other.gameObject.tag == "Floor")
         {
-            Debug.Log("registered");
-            wallCollision = true;
-            velocity = 0;
+            Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
         }
     }
-
-    void OnCollisionStay(Collision collision)
-    {
-        //        Debug.Log("hmmm00");
-        //    rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-        //    rb.AddForce(Vector3.forward * 15, ForceMode.VelocityChange);
-
-        /*     Vector3 heading = collision.transform.position - transform.position;
-                    float dot = Vector3.Dot(heading.normalized, transform.forward);
-                    if  (dot == 1)
-                    {
-                        Debug.Log("facing wall00");
-                    } else if (dot == -1)
-                    {
-                        Debug.Log("facing AWY from wall");
-                    } else
-                    {
-                        Debug.Log("facing wall side");
-                    } */
-        Ray ray = new Ray(transform.position, (collision.transform.position - transform.position).normalized * 10);
-        RaycastHit hit;
-        int layerMask = 1 << 9;
-        layerMask = ~layerMask;
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        {
-            Debug.Log("hit " + collision.gameObject.tag);
-            if (hit.collider.gameObject.tag == "OuterWall" || hit.collider.gameObject.tag == "MazeWall")
-            {
-                Debug.Log("HIT THE FUCKING WALL");
-            } else
-            {
-               // Debug.Log("NOT HITTING THE ASJFLSFJFSLFJL WALL");
-            }
-        }
-
-    }
-
-       private void OnCollisionExit(Collision collision)
-       {
-           wallCollision = false;
-   //        velocity = 2;
-   //        transform.Translate(Vector3.forward * velocity * Time.deltaTime);
-       } 
 
     void OnTriggerEnter(Collider other)
     {
-        // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
-        Debug.Log("triggered");
-    }
-
-    private void goLeft()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 270, 0));
-    }
-
-    private void goRight()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 0, 0));
-    }
-
-    private void goDown()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 180, 0));
-    }
-
-    private void goUp()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 90, 0));
+        // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
+        if (other.gameObject.name.Contains("Pellet"))
+        {
+            Destroy(other.gameObject);
+            numPelletsCollected++;
+        }
     }
 
     /* Code from: https://answers.unity.com/questions/1236494/how-to-rotate-fluentlysmoothly.html#answer-1236502 */
@@ -224,19 +150,15 @@ public class AvatarLogic : MonoBehaviour {
             Quaternion from = transform.rotation;
             Quaternion to = transform.rotation;
             to *= Quaternion.Euler(axis * angle);
- //           Debug.Log("transform.rotate is " + from);
-  //          Debug.Log("to is " + to);
 
             float elapsed = 0.0f;
             while (elapsed < duration)
             {
                 transform.rotation = Quaternion.Slerp(from, to, (elapsed / duration) * 2);
                 elapsed += Time.deltaTime;
- //               Debug.Log("currently rotating ------ " + transform.rotation);
                 yield return null;
             }
             transform.rotation = to;
- //           Debug.Log("finished rotating, transform.rotation is " + transform.rotation);
             isRotating = false;
         }
         
