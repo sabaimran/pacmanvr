@@ -102,8 +102,7 @@ public class AvatarLogic : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         }
         
-        // for some reason, sometimes this switches to right trigger?
-        if (Input.GetButtonDown("LeftTrigger"))
+        if (Input.GetButtonDown("TouchControllerA"))
         {
             if (numAmmo > 0)
             {
