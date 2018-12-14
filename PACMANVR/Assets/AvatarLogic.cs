@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AvatarLogic : MonoBehaviour {
-      public GameObject bulletPrefab;
+    public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public OVRCameraRig cameraRig;
     public Rigidbody rb;
 
-    private float velocity = 2;
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
     private int numAmmo = 5;
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
+    private int numPelletsCollected = 0;
+    private bool wallCollision = false;
+    private int speed = 5;
 
     private bool isRotating = false;
 
@@ -27,6 +29,8 @@ public class AvatarLogic : MonoBehaviour {
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
         rb = GetComponent<Rigidbody>();
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
+        // prevent sphere from rolling
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
     }
 	
 	// Update is called once per frame
@@ -45,6 +49,7 @@ public class AvatarLogic : MonoBehaviour {
             prevSwipe = currSwipe;
             // no diagonal movement allowed, movement is in 90 degree increments
             target = transform.rotation.eulerAngles;
+
             if (Mathf.Abs(x) >= Mathf.Abs(y))
             {
                 if (Mathf.Abs(x) > 0.7)
@@ -52,7 +57,6 @@ public class AvatarLogic : MonoBehaviour {
                     // horizontal movement over vertical
                     if (x < 0)
                     {
-                        Debug.Log("-------------------------------LEFT SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -61,7 +65,6 @@ public class AvatarLogic : MonoBehaviour {
                     }
                     else
                     {
-                        Debug.Log("-------------------------------RIGHT SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -77,7 +80,6 @@ public class AvatarLogic : MonoBehaviour {
                     // vertical movement over horizontal
                     if (y < 0)
                     {
-                        Debug.Log("-------------------------------DOWN SWIPE--------------------------------------");
                         if (!isRotating)
                         {
                             isRotating = true;
@@ -88,12 +90,19 @@ public class AvatarLogic : MonoBehaviour {
             
             }
             cameraRig.transform.LookAt(transform);
+
         }
 
-        // constant velocity in one direction
-        transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+        // make sphere move + (probably) can't be in start() bc you need to account for change in directions
+        rb.velocity = (transform.forward * speed);
 
-        if (Input.GetButtonDown("LeftTrigger"))
+        // make sure it doesn't start moving up walls
+        if (transform.position.y > 1)
+        {
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
+        
+        if (Input.GetButtonDown("TouchControllerA"))
         {
             if (numAmmo > 0)
             {
@@ -115,36 +124,21 @@ public class AvatarLogic : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        // Detects walls, but keeps moving through them.
-        if (other.gameObject.name.Contains("Pellet")) {
-            Destroy(other.gameObject);
+        // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
+        if (other.gameObject.tag == "Floor")
+        {
+            Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // for avatar to not pass through maze walls, avatar needs rigid body (gravity, kinematic, isTrigger all false) and walls must have collider (isTrigger false)
-        Debug.Log("triggered");
-    }
-
-    private void goLeft()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 270, 0));
-    }
-
-    private void goRight()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 0, 0));
-    }
-
-    private void goDown()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 180, 0));
-    }
-
-    private void goUp()
-    {
-        newRot = Quaternion.Euler(new Vector3(0, 90, 0));
+        // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
+        if (other.gameObject.name.Contains("Pellet"))
+        {
+            Destroy(other.gameObject);
+            numPelletsCollected++;
+        }
     }
 
     /* Code from: https://answers.unity.com/questions/1236494/how-to-rotate-fluentlysmoothly.html#answer-1236502 */
@@ -155,19 +149,15 @@ public class AvatarLogic : MonoBehaviour {
             Quaternion from = transform.rotation;
             Quaternion to = transform.rotation;
             to *= Quaternion.Euler(axis * angle);
-            Debug.Log("transform.rotate is " + from);
-            Debug.Log("to is " + to);
 
             float elapsed = 0.0f;
             while (elapsed < duration)
             {
                 transform.rotation = Quaternion.Slerp(from, to, (elapsed / duration) * 2);
                 elapsed += Time.deltaTime;
-                Debug.Log("currently rotating ------ " + transform.rotation);
                 yield return null;
             }
             transform.rotation = to;
-            Debug.Log("finished rotating, transform.rotation is " + transform.rotation);
             isRotating = false;
         }
         
