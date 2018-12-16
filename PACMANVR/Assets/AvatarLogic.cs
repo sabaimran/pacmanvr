@@ -143,6 +143,11 @@ public class AvatarLogic : MonoBehaviour {
             numPelletsCollected++;
             scoreboard.text = numPelletsCollected.ToString();
         }
+        if (numPelletsCollected == 80) {
+            scoreboard.fontSize = 40;
+            scoreboard.alignment = TextAnchor.UpperCenter;
+            scoreboard.text = "YOU WIN!";
+        }
     }
 
     /* Code from: https://answers.unity.com/questions/1236494/how-to-rotate-fluentlysmoothly.html#answer-1236502 */
