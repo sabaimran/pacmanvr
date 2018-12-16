@@ -2238,23 +2238,6 @@ Prefab:
       propertyPath: m_Name
       value: ghost (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4853128761008018, guid: 939d3989375d6234ebea4aa0a17d15a7, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4853128761008018, guid: 939d3989375d6234ebea4aa0a17d15a7, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4853128761008018, guid: 939d3989375d6234ebea4aa0a17d15a7, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 23692163839394520, guid: 939d3989375d6234ebea4aa0a17d15a7,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: da0a4280da2161540a8c0f366108a282, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939d3989375d6234ebea4aa0a17d15a7, type: 2}
   m_IsPrefabAsset: 0
