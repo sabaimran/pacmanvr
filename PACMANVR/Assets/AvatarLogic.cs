@@ -12,7 +12,7 @@ public class AvatarLogic : MonoBehaviour {
 
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
-    private int numAmmo = 5;
+    private int numAmmo = 10;
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
     private int numPelletsCollected = 0;
@@ -105,13 +105,13 @@ public class AvatarLogic : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, 3, transform.position.z);
         }
         
-        if (Input.GetButtonDown("TouchControllerA"))
+        if (Input.GetButtonDown("TouchControllerB"))
         {
             if (numAmmo > 0)
             {
                 fireBullet();
                 // TODO: how much ammo should player start off with?  
-                //numAmmo--;
+                numAmmo--;
             }
         }
     }
@@ -142,6 +142,10 @@ public class AvatarLogic : MonoBehaviour {
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = numPelletsCollected.ToString();
+        } else if (other.gameObject.name.Contains("PowerUp"))
+        {
+            Destroy(other.gameObject);
+            numAmmo += 10;
         }
         if (numPelletsCollected == 80) {
             scoreboard.fontSize = 40;
