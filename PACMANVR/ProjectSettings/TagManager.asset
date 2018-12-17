@@ -8,6 +8,8 @@ TagManager:
   - OuterWall
   - Floor
   - Pellet
+  - Ghost
+  - PowerPellet
   layers:
   - Default
   - TransparentFX

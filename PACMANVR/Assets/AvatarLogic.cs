@@ -27,13 +27,18 @@ public class AvatarLogic : MonoBehaviour {
     private Quaternion newRot = Quaternion.identity;
     private Vector3 target;
 
+    public AudioClip powerSound;
+    public AudioClip pelletSound;
+    public AudioClip ghostSound;
+    public AudioSource source;
+
     void Start () {
         cameraRig.transform.localPosition = new Vector3(0, yPosForLookingDown, -2);
         rb = GetComponent<Rigidbody>();
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
         // prevent sphere from rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-        
+        source = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -139,6 +144,8 @@ public class AvatarLogic : MonoBehaviour {
         // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
         if (other.gameObject.name.Contains("Pellet"))
         {
+            source.clip = pelletSound;
+            source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = numPelletsCollected.ToString();
@@ -147,6 +154,20 @@ public class AvatarLogic : MonoBehaviour {
             scoreboard.fontSize = 40;
             scoreboard.alignment = TextAnchor.UpperCenter;
             scoreboard.text = "YOU WIN!";
+        }
+
+        if (other.gameObject.tag == "Ghost")
+        {
+            Debug.Log("hit ghost");
+            source.clip = ghostSound;
+            source.Play();
+        }
+
+        if (other.gameObject.tag == "PowerPellet")
+        {
+            Debug.Log("hit power pellet");
+            source.clip = powerSound;
+            source.Play();
         }
     }
 
