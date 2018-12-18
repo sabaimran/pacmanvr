@@ -12,6 +12,11 @@ public class AvatarLogic : MonoBehaviour {
     public Text scoreboard;
     public Text pauseMenu;
 
+ /*   public AudioClip powerSound;
+    public AudioClip pelletSound;
+    public AudioClip ghostSound;
+    public AudioSource source; */
+
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
     private int numAmmo = 10;
@@ -43,6 +48,7 @@ public class AvatarLogic : MonoBehaviour {
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
         // prevent sphere from rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+  //      source = GetComponent<AudioSource>();
         pauseMenu.text = "";
         Time.timeScale = 1;
     }
@@ -190,6 +196,8 @@ public class AvatarLogic : MonoBehaviour {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
         } else if (other.gameObject.tag == "Ghost")
         {
+  //          source.clip = ghostSound;
+  //          source.Play();
             if (numLives > 0)
             {
                 numLives--;
@@ -206,11 +214,15 @@ public class AvatarLogic : MonoBehaviour {
         // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
         if (other.gameObject.name.Contains("Pellet"))
         {
+ //           source.clip = pelletSound;
+//            source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = "Score: " + numPelletsCollected.ToString();
         } else if (other.gameObject.name.Contains("PowerUp"))
         {
+ //           source.clip = powerSound;
+ //           source.Play();
             Destroy(other.gameObject);
             numAmmo += 10;
         }
