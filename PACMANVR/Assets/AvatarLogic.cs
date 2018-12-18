@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AvatarLogic : MonoBehaviour {
     public GameObject bulletPrefab;
@@ -19,11 +20,14 @@ public class AvatarLogic : MonoBehaviour {
     private int numPelletsCollected = 0;
     private bool wallCollision = false;
     private int speed = 5;
+    private int numLives = 3;
 
-    private string pauseText = "Paused.\nTo unpause, press A.";
+    private string pauseText = "PAUSED.\nTo unpause, press A.\nTo quit, press X.";
+    private string gameOverText = "GAME OVER. \nTo restart, press A.\nTo quit, press X.";
 
     private bool isPaused = false;
     private bool isRotating = false;
+    private bool gameOver = false;
 
     // needed so that avatar doesn't spaz out since swipes normally last for more than one frame
     private float thresholdForSwipes = 0.2f;
@@ -38,17 +42,30 @@ public class AvatarLogic : MonoBehaviour {
         // prevent sphere from rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         pauseMenu.text = "";
+        Time.timeScale = 1;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("TouchControllerA") && !isPaused)
+        if (gameOver)
+        {
+            rb.velocity = Vector3.zero;
+            Time.timeScale = 0;
+            pauseMenu.text = gameOverText;
+            if (Input.GetButtonDown("TouchControllerA"))
+            {
+                restartGame();
+            }
+        }
+        if (Input.GetButtonDown("TouchControllerA") && !isPaused && !gameOver)
         {
             Time.timeScale = 0;
             isPaused = true;
             rb.velocity = (transform.forward * 0);
             pauseMenu.text = pauseText;
-        } else if (Input.GetButtonDown("TouchControllerA") && isPaused)
+
+
+        } else if (Input.GetButtonDown("TouchControllerA") && isPaused && !gameOver)
         {
             // unpause
             Time.timeScale = 1;
@@ -58,7 +75,7 @@ public class AvatarLogic : MonoBehaviour {
             pauseMenu.text = "";
         }
 
-        if (!isPaused)
+        if (!isPaused && !gameOver)
         {
             Vector2 currSwipe = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
             float x = currSwipe.x;
@@ -132,9 +149,14 @@ public class AvatarLogic : MonoBehaviour {
                 if (numAmmo > 0)
                 {
                     fireBullet();
-                    // TODO: how much ammo should player start off with?  
                     numAmmo--;
                 }
+            }
+        } else
+        {
+            if (Input.GetButtonDown("TouchControllerX"))
+            {
+                Application.Quit();
             }
         }
     }
@@ -154,6 +176,16 @@ public class AvatarLogic : MonoBehaviour {
         if (other.gameObject.tag == "Floor")
         {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
+        } else if (other.gameObject.tag == "Ghost")
+        {
+            if (numLives > 0)
+            {
+                numLives--;
+            } else
+            {
+                // game over
+                gameOver = true;
+            }
         }
     }
 
@@ -175,6 +207,16 @@ public class AvatarLogic : MonoBehaviour {
             scoreboard.alignment = TextAnchor.UpperCenter;
             scoreboard.text = "YOU WIN!";
         }
+    }
+
+    void restartGame()
+    {
+        Time.timeScale = 1;
+        gameOver = false;
+        numLives = 3;
+        numAmmo = 10;
+        rb.velocity = transform.forward * 5;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /* Code from: https://answers.unity.com/questions/1236494/how-to-rotate-fluentlysmoothly.html#answer-1236502 */
