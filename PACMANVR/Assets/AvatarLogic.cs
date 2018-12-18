@@ -171,6 +171,7 @@ public class AvatarLogic : MonoBehaviour {
                     source.clip = bulletSound;
                     source.Play();
                     numAmmo--;
+                    scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
                 }
             }
         } else
@@ -228,6 +229,7 @@ public class AvatarLogic : MonoBehaviour {
             source.Play();
             Destroy(other.gameObject);
             numAmmo += 10;
+            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
         }
 
         if (numPelletsCollected == 80) {
@@ -244,7 +246,8 @@ public class AvatarLogic : MonoBehaviour {
         gameOver = false;
         numLives = 3;
         numAmmo = 10;
-        rb.velocity = transform.forward * 5;
+        speed = 5;
+        rb.velocity = transform.forward * speed;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
