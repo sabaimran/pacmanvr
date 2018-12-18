@@ -168,6 +168,7 @@ public class AvatarLogic : MonoBehaviour {
                 {
                     fireBullet();
                     numAmmo--;
+                    scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
                 }
             }
         } else
@@ -218,13 +219,14 @@ public class AvatarLogic : MonoBehaviour {
 //            source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
-            scoreboard.text = "Score: " + numPelletsCollected.ToString();
+            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
         } else if (other.gameObject.name.Contains("PowerUp"))
         {
  //           source.clip = powerSound;
  //           source.Play();
             Destroy(other.gameObject);
             numAmmo += 10;
+            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
         }
 
         if (numPelletsCollected == 80) {

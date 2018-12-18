@@ -997,7 +997,7 @@ MonoBehaviour:
 
     Controls:
 
-    - Use the joystick on either Touch Controller to rotate.
+    - Use the joystick on left Touch Controller to rotate.
 
     - Attack the ghosts by firing a bullet by pressing B. You start off with 10 bullets.
 
