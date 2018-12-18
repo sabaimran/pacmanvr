@@ -8,6 +8,15 @@ TagManager:
   - OuterWall
   - Floor
   - Pellet
+  - start
+  - wall2
+  - wall4
+  - floor
+  - wall1
+  - quit
+  - wall3
+  - ceiling
+  - PowerUp
   layers:
   - Default
   - TransparentFX
