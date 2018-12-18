@@ -24,10 +24,12 @@ public class AvatarLogic : MonoBehaviour {
 
     private string pauseText = "PAUSED.\nTo unpause, press A.\nTo quit, press X.";
     private string gameOverText = "GAME OVER. \nTo restart, press A.\nTo quit, press X.";
+    private string wonGameText = "Thanks for playing!\nTo replay, press A.\nTo quit, press X";
 
     private bool isPaused = false;
     private bool isRotating = false;
     private bool gameOver = false;
+    private bool wonGame = false;
 
     // needed so that avatar doesn't spaz out since swipes normally last for more than one frame
     private float thresholdForSwipes = 0.2f;
@@ -47,16 +49,26 @@ public class AvatarLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (gameOver)
+        if (gameOver || wonGame)
         {
             rb.velocity = Vector3.zero;
             Time.timeScale = 0;
-            pauseMenu.text = gameOverText;
             if (Input.GetButtonDown("TouchControllerA"))
             {
                 restartGame();
+            } else if (Input.GetButtonDown("TouchControllerX"))
+            {
+                Application.Quit();
+            }
+            if (gameOver)
+            {
+                pauseMenu.text = gameOverText;
+            } else
+            {
+                pauseMenu.text = wonGameText;
             }
         }
+
         if (Input.GetButtonDown("TouchControllerA") && !isPaused && !gameOver)
         {
             Time.timeScale = 0;
@@ -202,10 +214,12 @@ public class AvatarLogic : MonoBehaviour {
             Destroy(other.gameObject);
             numAmmo += 10;
         }
+
         if (numPelletsCollected == 80) {
             scoreboard.fontSize = 40;
             scoreboard.alignment = TextAnchor.UpperCenter;
             scoreboard.text = "YOU WIN!";
+            wonGame = true;
         }
     }
 
