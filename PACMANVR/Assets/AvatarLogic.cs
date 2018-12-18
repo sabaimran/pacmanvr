@@ -12,10 +12,11 @@ public class AvatarLogic : MonoBehaviour {
     public Text scoreboard;
     public Text pauseMenu;
 
- /*   public AudioClip powerSound;
+    public AudioClip powerSound;
     public AudioClip pelletSound;
     public AudioClip ghostSound;
-    public AudioSource source; */
+    public AudioClip bulletSound;
+    public AudioSource source;
 
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
@@ -48,7 +49,7 @@ public class AvatarLogic : MonoBehaviour {
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
         // prevent sphere from rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-  //      source = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
         pauseMenu.text = "";
         Time.timeScale = 1;
     }
@@ -167,6 +168,8 @@ public class AvatarLogic : MonoBehaviour {
                 if (numAmmo > 0)
                 {
                     fireBullet();
+                    source.clip = bulletSound;
+                    source.Play();
                     numAmmo--;
                 }
             }
@@ -196,8 +199,8 @@ public class AvatarLogic : MonoBehaviour {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
         } else if (other.gameObject.tag == "Ghost")
         {
-  //          source.clip = ghostSound;
-  //          source.Play();
+            source.clip = ghostSound;
+            source.Play();
             if (numLives > 0)
             {
                 numLives--;
@@ -214,15 +217,15 @@ public class AvatarLogic : MonoBehaviour {
         // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
         if (other.gameObject.name.Contains("Pellet"))
         {
- //           source.clip = pelletSound;
-//            source.Play();
+            source.clip = pelletSound;
+            source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = "Score: " + numPelletsCollected.ToString();
         } else if (other.gameObject.name.Contains("PowerUp"))
         {
- //           source.clip = powerSound;
- //           source.Play();
+            source.clip = powerSound;
+            source.Play();
             Destroy(other.gameObject);
             numAmmo += 10;
         }
