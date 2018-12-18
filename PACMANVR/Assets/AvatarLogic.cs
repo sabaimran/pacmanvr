@@ -241,7 +241,8 @@ public class AvatarLogic : MonoBehaviour {
         gameOver = false;
         numLives = 3;
         numAmmo = 10;
-        rb.velocity = transform.forward * 5;
+        speed = 5;
+        rb.velocity = transform.forward * speed;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
