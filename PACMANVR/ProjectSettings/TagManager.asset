@@ -7,6 +7,8 @@ TagManager:
   - MazeWall
   - OuterWall
   - Floor
+  - Pellet
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Floor
   - 
   - 
   - 
