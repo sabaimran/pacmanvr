@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AvatarLogic : MonoBehaviour {
     public GameObject bulletPrefab;
@@ -11,6 +12,12 @@ public class AvatarLogic : MonoBehaviour {
     public Text scoreboard;
     public Text pauseMenu;
 
+    public AudioClip powerSound;
+    public AudioClip pelletSound;
+    public AudioClip ghostSound;
+    public AudioClip bulletSound;
+    public AudioSource source;
+
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
     private int numAmmo = 10;
@@ -19,11 +26,16 @@ public class AvatarLogic : MonoBehaviour {
     private int numPelletsCollected = 0;
     private bool wallCollision = false;
     private int speed = 5;
+    private int numLives = 3;
 
-    private string pauseText = "Paused.\nTo unpause, press A.";
+    private string pauseText = "PAUSED.\nTo unpause, press A.\nTo quit, press X.";
+    private string gameOverText = "GAME OVER. \nTo restart, press A.\nTo quit, press X.";
+    private string wonGameText = "Thanks for playing!\nTo replay, press A.\nTo quit, press X";
 
     private bool isPaused = false;
     private bool isRotating = false;
+    private bool gameOver = false;
+    private bool wonGame = false;
 
     // needed so that avatar doesn't spaz out since swipes normally last for more than one frame
     private float thresholdForSwipes = 0.2f;
@@ -37,18 +49,42 @@ public class AvatarLogic : MonoBehaviour {
         bulletSpawn.transform.localPosition = new Vector3(0, 0, bulletSpawnDistance);
         // prevent sphere from rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        source = GetComponent<AudioSource>();
         pauseMenu.text = "";
+        Time.timeScale = 1;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("TouchControllerA") && !isPaused)
+        if (gameOver || wonGame)
+        {
+            rb.velocity = Vector3.zero;
+            Time.timeScale = 0;
+            if (Input.GetButtonDown("TouchControllerA"))
+            {
+                restartGame();
+            } else if (Input.GetButtonDown("TouchControllerX"))
+            {
+                Application.Quit();
+            }
+            if (gameOver)
+            {
+                pauseMenu.text = gameOverText;
+            } else
+            {
+                pauseMenu.text = wonGameText;
+            }
+        }
+
+        if (Input.GetButtonDown("TouchControllerA") && !isPaused && !gameOver)
         {
             Time.timeScale = 0;
             isPaused = true;
             rb.velocity = (transform.forward * 0);
             pauseMenu.text = pauseText;
-        } else if (Input.GetButtonDown("TouchControllerA") && isPaused)
+
+
+        } else if (Input.GetButtonDown("TouchControllerA") && isPaused && !gameOver)
         {
             // unpause
             Time.timeScale = 1;
@@ -58,7 +94,7 @@ public class AvatarLogic : MonoBehaviour {
             pauseMenu.text = "";
         }
 
-        if (!isPaused)
+        if (!isPaused && !gameOver)
         {
             Vector2 currSwipe = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
             float x = currSwipe.x;
@@ -132,9 +168,17 @@ public class AvatarLogic : MonoBehaviour {
                 if (numAmmo > 0)
                 {
                     fireBullet();
-                    // TODO: how much ammo should player start off with?  
+                    source.clip = bulletSound;
+                    source.Play();
                     numAmmo--;
+                    scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
                 }
+            }
+        } else
+        {
+            if (Input.GetButtonDown("TouchControllerX"))
+            {
+                Application.Quit();
             }
         }
     }
@@ -154,6 +198,18 @@ public class AvatarLogic : MonoBehaviour {
         if (other.gameObject.tag == "Floor")
         {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
+        } else if (other.gameObject.tag == "Ghost")
+        {
+            source.clip = ghostSound;
+            source.Play();
+            if (numLives > 0)
+            {
+                numLives--;
+            } else
+            {
+                // game over
+                gameOver = true;
+            }
         }
     }
 
@@ -162,19 +218,37 @@ public class AvatarLogic : MonoBehaviour {
         // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
         if (other.gameObject.name.Contains("Pellet"))
         {
+            source.clip = pelletSound;
+            source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = "Score: " + numPelletsCollected.ToString();
         } else if (other.gameObject.name.Contains("PowerUp"))
         {
+            source.clip = powerSound;
+            source.Play();
             Destroy(other.gameObject);
             numAmmo += 10;
+            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
         }
+
         if (numPelletsCollected == 80) {
             scoreboard.fontSize = 40;
             scoreboard.alignment = TextAnchor.UpperCenter;
             scoreboard.text = "YOU WIN!";
+            wonGame = true;
         }
+    }
+
+    void restartGame()
+    {
+        Time.timeScale = 1;
+        gameOver = false;
+        numLives = 3;
+        numAmmo = 10;
+        speed = 5;
+        rb.velocity = transform.forward * speed;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /* Code from: https://answers.unity.com/questions/1236494/how-to-rotate-fluentlysmoothly.html#answer-1236502 */
