@@ -51,6 +51,7 @@ public class AvatarLogic : MonoBehaviour {
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         source = GetComponent<AudioSource>();
         pauseMenu.text = "";
+        cameraRig.transform.LookAt(transform);
         Time.timeScale = 1;
     }
 	

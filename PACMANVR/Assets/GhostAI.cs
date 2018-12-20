@@ -30,15 +30,15 @@ public class GhostAI : MonoBehaviour {
     {
 
         LayerMask mask = LayerMask.GetMask("Default");
-        Ray forward_ray = new Ray(transform.position - new Vector3(0, 2.5f, 1.0f), transform.forward);
+        Ray forward_ray = new Ray(transform.position - new Vector3(0, 2.5f, 1.0f), transform.up*-1);
         Ray left_ray = new Ray(transform.position - new Vector3(0, 2.5f, 1.0f), transform.right * -1);
         Ray right_ray = new Ray(transform.position - new Vector3(0, 2.5f, 1.0f), transform.right);
         
-        transform.Translate(speed * Vector3.forward * Time.deltaTime);
+        transform.Translate(speed * Vector3.up*-1 * Time.deltaTime);
        
         Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f) , transform.right * 8, Color.yellow);
 
-        Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.forward * 4, Color.green);
+        Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.up*-1 * 4, Color.green);
         Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.right*-1 * 8, Color.yellow);
         if (Time.time- t > 3.0f)
         {
