@@ -36,14 +36,14 @@ public class GhostAI : MonoBehaviour {
         
         transform.Translate(speed * Vector3.up*-1 * Time.deltaTime);
        
-        Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f) , transform.right * 8, Color.yellow);
+        //Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f) , transform.right * 8, Color.yellow);
 
-        Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.up*-1 * 4, Color.green);
-        Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.right*-1 * 8, Color.yellow);
+        //Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.up*-1 * 4, Color.green);
+        //Debug.DrawRay(transform.position - new Vector3(0, 2.5f, 1.0f), transform.right*-1 * 8, Color.yellow);
         if (Time.time- t > 3.0f)
         {
             ray_activate = true;
-            Debug.Log(ray_activate);
+            //Debug.Log(ray_activate);
         }
         if (Time.time - turn_time > 1.0f)
         {
@@ -54,11 +54,11 @@ public class GhostAI : MonoBehaviour {
         {
             bool turn = (Random.value > 0.25f);
 
-            Debug.Log("activited");
+            //Debug.Log("activited");
                 left_turned = true;
                 if (!Physics.Raycast(left_ray, out left_obj, 8, mask) && turn)
                 {
-                    Debug.Log("left");
+                    //Debug.Log("left");
                     if (allow_turn)
                     {
                     transform.RotateAround(transform.position, Vector3.up, -90);
@@ -70,7 +70,7 @@ public class GhostAI : MonoBehaviour {
 
                 if (!Physics.Raycast(right_ray, out right_obj, 8, mask) && left_turned && turn)
                 {
-                    Debug.Log("right");
+                    //Debug.Log("right");
                     if (allow_turn)
                     {
                     transform.RotateAround(transform.position, Vector3.up, 90);
@@ -94,6 +94,9 @@ public class GhostAI : MonoBehaviour {
         {
             rand = Random.Range(0, 2);
             transform.RotateAround(transform.position, Vector3.up, 180);
+        }
+        if (collision.gameObject.name.Contains("Bullet")) {
+            transform.gameObject.SetActive(false);
         }
     }
 }

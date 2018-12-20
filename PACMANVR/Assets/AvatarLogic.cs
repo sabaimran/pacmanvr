@@ -20,7 +20,7 @@ public class AvatarLogic : MonoBehaviour {
 
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
-    private int numAmmo = 10;
+    private int numAmmo = 3;
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
     private int numPelletsCollected = 0;
@@ -222,21 +222,23 @@ public class AvatarLogic : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         // because we're using rb.addforce, must have pellets' onTrigger be CHECKED so that avatar won't stop when it runs into one
-        if (other.gameObject.name.Contains("Pellet"))
+        if (other.gameObject.tag == "PowerUp")
+        {
+            Debug.Log("power up collected");
+            source.clip = powerSound;
+            source.Play();
+            Destroy(other.gameObject);
+            numAmmo += 1;
+            numPelletsCollected++;
+            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
+        } else if (other.gameObject.name.Contains("Pellet"))
         {
             source.clip = pelletSound;
             source.Play();
             Destroy(other.gameObject);
             numPelletsCollected++;
             scoreboard.text = "Score: " + numPelletsCollected.ToString();
-        } else if (other.gameObject.name.Contains("PowerUp"))
-        {
-            source.clip = powerSound;
-            source.Play();
-            Destroy(other.gameObject);
-            numAmmo += 10;
-            scoreboard.text = "Score: " + numPelletsCollected.ToString() + "\nNumber of Bullets Left: " + numAmmo;
-        }
+        } 
 
         if (numPelletsCollected == 80) {
             scoreboard.fontSize = 40;
