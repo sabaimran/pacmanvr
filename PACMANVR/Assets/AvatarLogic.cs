@@ -106,6 +106,7 @@ public class AvatarLogic : MonoBehaviour {
 
             if ((diffX > thresholdForSwipes || diffY > thresholdForSwipes) && (x != 0 || y != 0))
             {
+                Debug.Log("swiped controler");
                 prevSwipe = currSwipe;
                 // no diagonal movement allowed, movement is in 90 degree increments
                 target = transform.rotation.eulerAngles;
@@ -198,7 +199,7 @@ public class AvatarLogic : MonoBehaviour {
         if (other.gameObject.tag == "Floor")
         {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
-        } else if (other.gameObject.tag == "Ghost")
+        } else if (other.gameObject.name.Contains("Ghost"))
         {
             source.clip = ghostSound;
             source.Play();
