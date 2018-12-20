@@ -201,8 +201,12 @@ public class AvatarLogic : MonoBehaviour {
             Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
         } else if (other.gameObject.name.Contains("Ghost"))
         {
+            Debug.Log("ghost colisiion");
+            Physics.IgnoreCollision(other.collider, GetComponent<Collider>());
             source.clip = ghostSound;
             source.Play();
+            gameOver = true;
+            /*
             if (numLives > 0)
             {
                 numLives--;
@@ -210,7 +214,7 @@ public class AvatarLogic : MonoBehaviour {
             {
                 // game over
                 gameOver = true;
-            }
+            }*/
         }
     }
 
