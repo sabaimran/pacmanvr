@@ -20,7 +20,7 @@ public class AvatarLogic : MonoBehaviour {
 
     private float bulletVelocity = 5;
     private float bulletSpawnDistance = 2;
-    private int numAmmo = 3;
+    private int numAmmo = 2;
     private float yPosForLookingDown = 1.5f;
     private float distanceAwayFromAvatar = 2;
     private int numPelletsCollected = 0;
